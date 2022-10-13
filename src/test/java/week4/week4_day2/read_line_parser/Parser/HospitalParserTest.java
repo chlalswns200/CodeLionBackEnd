@@ -15,8 +15,6 @@ class HospitalParserTest {
         HospitalParser hospitalParser = new HospitalParser();
         Hospital hospital = hospitalParser.parse(this.line1);
         Assertions.assertEquals("A1120837", hospital.getId());
-
-        System.out.println("hospital.getId() = " + hospital.getId());
     }
 
 }
