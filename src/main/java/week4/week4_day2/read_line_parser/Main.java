@@ -18,6 +18,7 @@ public class Main {
 
         String targetFilename = "javaQuery.sql";
         writer.createAFile(targetFilename);
+
         List<String> queryList = writer.makeQuery(hospitals);
         writer.write(queryList,targetFilename);
 
