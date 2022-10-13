@@ -17,7 +17,7 @@ class HospitalParserTest {
 
         Assertions.assertEquals("A1120837", hospital.getId());
 
-        //주소 파싱 추가
+        //주소 파싱 테스트 추가
         String address = "서울특별시 금천구 벚꽃로 286 삼성리더스타워 111~114호 (가산동)";
 
         Assertions.assertEquals(address,hospital.getAddress());
