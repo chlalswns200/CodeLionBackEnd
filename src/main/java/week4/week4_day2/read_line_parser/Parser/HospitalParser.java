@@ -13,6 +13,9 @@ public class HospitalParser implements Parser<Hospital>{
         return str.substring(1, str.length() - 1);
     }
 
+    private String replaceAllQuot(String str) {
+        return str.replaceAll("\"", "");
+    }
     @Override
     public Hospital parse(String str) {
         HospitalParser hospitalParser = new HospitalParser();
@@ -21,9 +24,6 @@ public class HospitalParser implements Parser<Hospital>{
         for (int i = 0; i < split.length; i++) {
             split[i] = hospitalParser.getRealValue(split[i]);
             split[i] = split[i].replace("'", "\\");
-        }
-        for (String s : split) {
-            s.replace("'", "\"");
         }
 
         return new Hospital(split[0], split[1],
