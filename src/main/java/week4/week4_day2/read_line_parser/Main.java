@@ -18,27 +18,7 @@ public class Main {
 
         String targetFilename = "javaQuery.sql";
         writer.createAFile(targetFilename);
-
-        List<String> queryList = new ArrayList<>();
-        queryList.add("INSERT INTO\n");
-        queryList.add("`likelion-db`.`seoul_hospital`(`id`,`address`,`district`,`category`,`emergency_room`,`name`,`subdivision`)\n");
-        queryList.add("VALUES\n");
-        int i=1;
-        for (Hospital hospital : hospitals) {
-            if (i != 19039) {
-                String s = String.format("('%s','%s','%s','%s', %d ,'%s','%s'),\n",hospital.getId(),hospital.getAddress(),hospital.getDistrict(),
-                        hospital.getCategory(),hospital.getEmergencyRoom(),hospital.getName(),hospital.getSubdivision());
-                queryList.add(s);
-
-            } else {
-                String s1 = String.format("('%s','%s','%s','%s', %d ,'%s','%s');\n",hospital.getId(),hospital.getAddress(),hospital.getDistrict(),
-                        hospital.getCategory(),hospital.getEmergencyRoom(),hospital.getName(),hospital.getSubdivision());
-                queryList.add(s1);
-            }
-            i++;
-        }
-
-        queryList.add("SELECT * FROM `likelion-db`.seoul_hospital;");
+        List<String> queryList = writer.makeQuery(hospitals);
         writer.write(queryList,targetFilename);
 
     }
