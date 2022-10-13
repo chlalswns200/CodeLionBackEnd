@@ -16,7 +16,6 @@ public class Main {
         List<Hospital> hospitals = hospitalLineReader.readLines(filename);
         Writer writer = new Writer();
 
-
         String targetFilename = "javaQuery.sql";
         writer.createAFile(targetFilename);
 
@@ -36,15 +35,12 @@ public class Main {
                 queryList.add(s);
 
             } else {
-                System.out.println("19040 터짐"+i+hospital.getName());
                 String s1 = String.format("('%s','%s','%s','%s', %d ,'%s','%s');\n",hospital.getId(),hospital.getAddress(),hospital.getDistrict(),
                         hospital.getCategory(),hospital.getEmergencyRoom(),hospital.getName(),hospital.getSubdivision());
                 queryList.add(s1);
             }
             i++;
-
         }
-        System.out.println("i = " + i);
         queryList.add("SELECT * FROM `likelion-db`.seoul_hospital;");
         writer.write(queryList,targetFilename);
 
