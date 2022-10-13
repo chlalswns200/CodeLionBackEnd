@@ -23,10 +23,6 @@ public class Main {
         queryList.add("INSERT INTO\n");
         queryList.add("`likelion-db`.`seoul_hospital`(`id`,`address`,`district`,`category`,`emergency_room`,`name`,`subdivision`)\n");
         queryList.add("VALUES\n");
-        for (String s : queryList) {
-            System.out.print("s = " + s);
-
-        }
         int i=1;
         for (Hospital hospital : hospitals) {
             if (i != 19039) {
