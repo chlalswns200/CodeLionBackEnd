@@ -5,7 +5,7 @@ import week4.week4_day2.read_line_parser.domain.Hospital;
 
 public class HospitalParser implements Parser<Hospital>{
 
-    public String setDistrict(String str) {
+    public String formatDistrict(String str) {
         String[] s = str.split(" ");
         return s[0] + " " + s[1];
     }
@@ -30,7 +30,7 @@ public class HospitalParser implements Parser<Hospital>{
         String[] split = str.split(",");
 
         return new Hospital(split[0], split[1],
-                hospitalParser.setDistrict(split[1]),
+                hospitalParser.formatDistrict(split[1]),
                 split[2], Integer.parseInt(split[6]),
                 split[10],null);
     }
