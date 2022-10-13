@@ -16,15 +16,15 @@ public class HospitalParser implements Parser<Hospital>{
     private String replaceAllQuot(String str) {
         return str.replaceAll("\"", "");
     }
+
     @Override
     public Hospital parse(String str) {
+
         HospitalParser hospitalParser = new HospitalParser();
+        str = str.replaceAll("\"", "");
+        str = str.replaceAll("'","");
 
         String[] split = str.split(",");
-        for (int i = 0; i < split.length; i++) {
-            split[i] = hospitalParser.getRealValue(split[i]);
-            split[i] = split[i].replace("'", "\\");
-        }
 
         return new Hospital(split[0], split[1],
                 hospitalParser.setDistrict(split[1]),
