@@ -41,6 +41,7 @@ public class Main {
             }
             i++;
         }
+
         queryList.add("SELECT * FROM `likelion-db`.seoul_hospital;");
         writer.write(queryList,targetFilename);
 
