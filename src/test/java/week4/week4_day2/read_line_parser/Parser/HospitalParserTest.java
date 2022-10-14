@@ -47,7 +47,6 @@ class HospitalParserTest {
         assertHospital(hospitalParser.parse(this.line2),
                 "A1117873","서울특별시 관악구 신원로 38 5층 (신림동 청암빌딩)","서울특별시 관악구",
                 "N",2,"가로수치과의원","치과");
-
     }
 
 }
