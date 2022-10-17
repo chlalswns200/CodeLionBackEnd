@@ -26,14 +26,4 @@ public class RightTriangle {
         RightTriangle rt = new RightTriangle();
         rt.drwaTriangle2(5);
     }
-    // n = 7 출력
-    /*
-     *
-     **
-     ***
-     ****
-     *****
-     ******
-     *******
-     */
 }
