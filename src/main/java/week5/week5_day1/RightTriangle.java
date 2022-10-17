@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class RightTriangle {
 
-    private void drwaTriangle(int n) {
+    private void drwaTriangle1(int n) {
         for (int i=1; i <= n; i++) {
 
             for (int j = 0; j < i; j++) {
@@ -14,13 +14,17 @@ public class RightTriangle {
         }
     }
 
+    private void drwaTriangle2(int n) {
+        for (int i = 0; i < n; i++) {
+            System.out.print(" ".repeat(4-i));
+            System.out.println("*".repeat(2*i+1));
+        }
+    }
+
     public static void main(String[] args) {
 
-        Scanner sc = new Scanner(System.in);
         RightTriangle rt = new RightTriangle();
-        int n = sc.nextInt();
-        rt.drwaTriangle(n);
-
+        rt.drwaTriangle2(5);
     }
     // n = 7 출력
     /*
