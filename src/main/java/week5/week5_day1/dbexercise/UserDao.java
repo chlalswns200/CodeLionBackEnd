@@ -9,7 +9,7 @@ public class UserDao {
 
     public void add() throws SQLException {
         Connection conn = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/likelion-db","root",""
+                "","",""
         );
 
         PreparedStatement ps = conn.prepareStatement(
