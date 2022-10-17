@@ -22,4 +22,14 @@ public class RightTriangle {
         rt.drwaTriangle(n);
 
     }
+    // n = 7 출력
+    /*
+     *
+     **
+     ***
+     ****
+     *****
+     ******
+     *******
+     */
 }
