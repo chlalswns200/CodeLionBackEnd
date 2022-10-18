@@ -9,7 +9,7 @@ import java.util.Map;
 
 public class UserDao2 {
 
-    public void add() throws SQLException {
+    public void add(User user) throws SQLException {
         Map<String, String> env = System.getenv();
         String dbHost = env.get("DB_HOST");
         String dbUser = env.get("DB_USER");
@@ -20,9 +20,9 @@ public class UserDao2 {
         PreparedStatement ps = conn.prepareStatement(
                 "INSERT INTO users(id,name,password) values(?,?,?)"
         );
-        ps.setString(1,"1");
-        ps.setString(2,"Minjun2");
-        ps.setString(3,"112345");
+        ps.setString(1,user.getId());
+        ps.setString(2,user.getName());
+        ps.setString(3,user.getPassword());
 
         int status = ps.executeUpdate();
         ps.close();
@@ -57,9 +57,10 @@ public class UserDao2 {
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
 
         UserDao2 userDao = new UserDao2();
-       // userDao.add();
+        userDao.add(new User("7","Ruru","1234qwer"));
 
-        User user = userDao.get("0");
+        User user = userDao.get("7");
+
         System.out.println("user.getName() = " + user.getName());
 
 
