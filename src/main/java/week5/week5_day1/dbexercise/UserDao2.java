@@ -29,7 +29,7 @@ public class UserDao2 {
         conn.close();
     }
 
-    public User get(String id) throws ClassNotFoundException, SQLException {
+    public User findById(String id) throws ClassNotFoundException, SQLException {
 
         Map<String, String> env = System.getenv();
         String dbHost = env.get("DB_HOST");
@@ -59,7 +59,7 @@ public class UserDao2 {
         UserDao2 userDao = new UserDao2();
         userDao.add(new User("7","Ruru","1234qwer"));
 
-        User user = userDao.get("7");
+        User user = userDao.findById("7");
 
         System.out.println("user.getName() = " + user.getName());
 
