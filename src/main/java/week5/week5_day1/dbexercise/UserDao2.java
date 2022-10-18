@@ -45,7 +45,6 @@ public class UserDao2 {
         ps.setString(1, id);
         ResultSet rs = ps.executeQuery();
         rs.next();
-
         User user = new User(rs.getString("id"), rs.getString("name"), rs.getString("password"));
 
         rs.close();
@@ -60,7 +59,7 @@ public class UserDao2 {
         UserDao2 userDao = new UserDao2();
        // userDao.add();
 
-        User user = userDao.get("1");
+        User user = userDao.get("0");
         System.out.println("user.getName() = " + user.getName());
 
 
