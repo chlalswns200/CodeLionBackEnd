@@ -9,13 +9,21 @@ import java.util.Map;
 
 public class UserDao2 {
 
-    public void add(User user) throws SQLException {
+    private Connection makeConnection() throws SQLException {
         Map<String, String> env = System.getenv();
         String dbHost = env.get("DB_HOST");
         String dbUser = env.get("DB_USER");
         String dbPassword = env.get("DB_PASSWORD");
 
-        Connection conn = DriverManager.getConnection(dbHost, dbUser, dbPassword);
+        Connection c = DriverManager.getConnection(dbHost, dbUser, dbPassword);
+
+        return c;
+
+    }
+
+    public void add(User user) throws SQLException {
+
+        Connection conn = makeConnection();
 
         PreparedStatement ps = conn.prepareStatement(
                 "INSERT INTO users(id,name,password) values(?,?,?)"
@@ -29,16 +37,9 @@ public class UserDao2 {
         conn.close();
     }
 
-    public User findById(String id) throws ClassNotFoundException, SQLException {
+    public User findById(String id) throws SQLException {
 
-        Map<String, String> env = System.getenv();
-        String dbHost = env.get("DB_HOST");
-        String dbUser = env.get("DB_USER");
-        String dbPassword = env.get("DB_PASSWORD");
-
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection conn = DriverManager.getConnection(
-                dbHost, dbUser, dbPassword);
+        Connection conn = makeConnection();
 
         PreparedStatement ps = conn.prepareStatement(
                 "select id, name ,password FROM users WHERE id = ?");
