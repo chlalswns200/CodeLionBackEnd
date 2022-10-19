@@ -1,30 +1,65 @@
 package week5.week5_day1.dbexercise.dao;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import week5.week5_day1.dbexercise.domain.User;
+
+import java.sql.*;
+
+//환경 변수를 통해 id name password를 따로 저장하고 하는 방법
 
 public class UserDao {
 
-    public void add() throws SQLException {
-        Connection conn = DriverManager.getConnection(
-                "","",""
-        );
+    private ConnectionMaker connectionMaker;
+
+    public UserDao() {
+        this.connectionMaker = new AwsConnectionMaker();
+    }
+
+    public UserDao(ConnectionMaker connectionMaker) {
+        this.connectionMaker = connectionMaker;
+    }
+
+    public void add(User user) throws SQLException {
+
+        Connection conn = connectionMaker.makeConnection();
 
         PreparedStatement ps = conn.prepareStatement(
                 "INSERT INTO users(id,name,password) values(?,?,?)"
-                );
-        ps.setString(1,"0");
-        ps.setString(2,"Minjun");
-        ps.setString(3,"1123");
+        );
+        ps.setString(1,user.getId());
+        ps.setString(2,user.getName());
+        ps.setString(3,user.getPassword());
 
         int status = ps.executeUpdate();
         ps.close();
         conn.close();
     }
-    public static void main(String[] args) throws SQLException {
+
+    public User findById(String id) throws SQLException {
+
+        Connection conn = connectionMaker.makeConnection();
+
+        PreparedStatement ps = conn.prepareStatement(
+                "select id, name ,password FROM users WHERE id = ?");
+        ps.setString(1, id);
+        ResultSet rs = ps.executeQuery();
+        rs.next();
+        User user = new User(rs.getString("id"), rs.getString("name"), rs.getString("password"));
+
+        rs.close();
+        ps.close();
+        conn.close();
+
+        return user;
+
+    }
+    public static void main(String[] args) throws SQLException, ClassNotFoundException {
+
         UserDao userDao = new UserDao();
-        userDao.add();
+        //userDao.add(new User("7","Ruru","1234qwer"));
+
+        User user = userDao.findById("7");
+        System.out.println("user.getName() = " + user.getName());
+
+
     }
 }
