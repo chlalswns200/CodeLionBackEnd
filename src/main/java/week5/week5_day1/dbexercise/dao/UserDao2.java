@@ -14,6 +14,10 @@ public class UserDao2 {
         this.connectionMaker = new AwsConnectionMaker2();
     }
 
+    public UserDao2(ConnectionMaker connectionMaker) {
+        this.connectionMaker = connectionMaker;
+    }
+
     public void add(User user) throws SQLException {
 
         Connection conn = connectionMaker.makeConnection();
