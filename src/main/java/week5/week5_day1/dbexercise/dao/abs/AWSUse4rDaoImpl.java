@@ -1,6 +1,4 @@
-package week5.week5_day1.dbexercise.dao;
-
-import week5.week5_day1.dbexercise.domain.User;
+package week5.week5_day1.dbexercise.dao.abs;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

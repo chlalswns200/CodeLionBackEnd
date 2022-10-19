@@ -1,4 +1,4 @@
-package week5.week5_day1.dbexercise.dao;
+package week5.week5_day1.dbexercise.dao.abs;
 
 import week5.week5_day1.dbexercise.domain.User;
 
