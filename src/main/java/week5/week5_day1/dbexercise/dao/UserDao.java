@@ -59,13 +59,33 @@ public class UserDao {
     }
 
     public void deleteAll() throws SQLException {
-        Connection conn = connectionMaker.makeConnection();
-        PreparedStatement ps = conn.prepareStatement(
-                "DELETE FROM users");
+        Connection conn = null;
+        PreparedStatement ps = null;
 
-        ps.executeUpdate();
-        ps.close();
-        conn.close();
+        try {
+            conn = connectionMaker.makeConnection();
+            ps = conn.prepareStatement(
+                    "DELETE FROM users");
+            ps.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally{
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException e) {
+                }
+            }
+
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                }
+            }
+        }
+
     }
 
     public int getCount() throws SQLException {
@@ -80,16 +100,5 @@ public class UserDao {
         ps.close();
         conn.close();
         return count;
-    }
-
-    public static void main(String[] args) throws SQLException, ClassNotFoundException {
-
-        UserDao userDao = new UserDao();
-        //userDao.add(new User("7","Ruru","1234qwer"));
-
-        User user = userDao.findById("7");
-        System.out.println("user.getName() = " + user.getName());
-
-
     }
 }
