@@ -24,23 +24,37 @@ class UserDaoTest {
     ApplicationContext context;
 
     UserDao userDao;
+    User userA;
+    User userB;
 
     @BeforeEach
     void setUp() {
         this.userDao = context.getBean("awsUserDao", UserDao.class);
+        userA = new User("1", "Eternity", "11");
+        userB = new User("2", "Um", "22");
     }
 
 
     @Test
     void addAndSelect() throws SQLException {
 
-        User user = new User("15", "Eternity", "1123");
         userDao.deleteAll();
-        userDao.add(user);
+        userDao.add(userA);
 
-        User findUser = userDao.findById("15");
-        assertEquals(user.getName(), findUser.getName());
-        assertEquals(user.getPassword(), findUser.getPassword());
+        User findUser = userDao.findById("1");
+        assertEquals(userA.getName(), findUser.getName());
+        assertEquals(userA.getPassword(), findUser.getPassword());
+    }
+
+    @Test
+    void count() throws SQLException {
+        userDao.deleteAll();
+
+        userDao.add(userA);
+        assertEquals(1, userDao.getCount());
+
+        userDao.add(userB);
+        assertEquals(2, userDao.getCount());
     }
 
     @Test
@@ -54,19 +68,6 @@ class UserDaoTest {
     void deleteAll() throws SQLException {
         userDao.deleteAll();
         assertEquals(0, userDao.getCount());
-    }
-
-    @Test
-    void count() throws SQLException {
-        userDao.deleteAll();
-        User user = new User("1", "Eternity", "11");
-
-        userDao.add(user);
-        assertEquals(1, userDao.getCount());
-
-        User userB = new User("2", "Um", "22");
-        userDao.add(userB);
-        assertEquals(2, userDao.getCount());
     }
 
 }
