@@ -48,4 +48,17 @@ class Stack02Test {
         Stack<Integer> st = new Stack<>();
     }
 
+    @Test
+    void peek() {
+
+        Stack02 st = new Stack02();
+        assertThrows(EmptyStackException.class,()->{
+            st.peek();
+        });
+
+        st.push(10);
+        int peeked = st.peek();
+        assertEquals(10,peeked);
+    }
+
 }
