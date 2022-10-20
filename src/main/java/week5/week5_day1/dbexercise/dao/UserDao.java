@@ -58,7 +58,7 @@ public class UserDao {
 
     }
 
-    public void deleteAll() throws SQLException {
+    public void deleteAll() {
         Connection conn = null;
         PreparedStatement ps = null;
 
@@ -88,17 +88,40 @@ public class UserDao {
 
     }
 
-    public int getCount() throws SQLException {
-        Connection conn = connectionMaker.makeConnection();
-        PreparedStatement ps = conn.prepareStatement(
-                "SELECT count(*) from users");
-        ResultSet rs = ps.executeQuery();
-        rs.next();
-        int count = rs.getInt(1);
+    public int getCount() {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            conn = connectionMaker.makeConnection();
+            ps = conn.prepareStatement(
+                    "SELECT count(*) from users");
+            rs = ps.executeQuery();
+            rs.next();
+            int count = rs.getInt(1);
+            return count;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                }
+            }
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException e) {
+                }
+            }
 
-        rs.close();
-        ps.close();
-        conn.close();
-        return count;
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                }
+            }
+        }
     }
 }
