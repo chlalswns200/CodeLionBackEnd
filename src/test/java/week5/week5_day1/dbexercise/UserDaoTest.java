@@ -27,9 +27,9 @@ class UserDaoTest {
         UserDao userDao = context.getBean("awsUserDao",UserDao.class);
 
         User user = new User("15", "Eternity", "1123");
-        //userDao.add(user);
+        userDao.add(user);
 
-        User findUser = userDao.findById("50");
+        User findUser = userDao.findById("15");
         assertEquals("Eternity",findUser.getName());
         assertEquals("1234",findUser.getPassword());
     }
@@ -40,11 +40,15 @@ class UserDaoTest {
         userDao.deleteAll();
         assertEquals(0,userDao.getCount());
     }
+
     @Test
     void count() throws SQLException {
         UserDao userDao = context.getBean("awsUserDao",UserDao.class);
+        userDao.deleteAll();
+        User user = new User("20", "Eternity", "1123");
+        userDao.add(user);
         int count = userDao.getCount();
-        assertEquals(9,count);
+        assertEquals(1,count);
     }
 
 }
