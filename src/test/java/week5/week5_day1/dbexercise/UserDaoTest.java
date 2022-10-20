@@ -35,10 +35,15 @@ class UserDaoTest {
     }
 
     @Test
+    void deleteAll() throws SQLException {
+        UserDao userDao = context.getBean("awsUserDao",UserDao.class);
+        userDao.deleteAll();
+        assertEquals(0,userDao.getCount());
+    }
+    @Test
     void count() throws SQLException {
         UserDao userDao = context.getBean("awsUserDao",UserDao.class);
         int count = userDao.getCount();
-
         assertEquals(9,count);
     }
 
