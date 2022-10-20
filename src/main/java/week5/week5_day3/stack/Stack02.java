@@ -1,5 +1,7 @@
 package week5.week5_day3.stack;
 
+import java.util.EmptyStackException;
+
 public class Stack02 {
 
     private Integer[] arr;
@@ -22,6 +24,14 @@ public class Stack02 {
     }
 
     public int pop() {
+        if (this.isEmpty()) {
+            throw new EmptyStackException();
+        }
         return this.arr[--this.top];
+    }
+
+    public boolean isEmpty() {
+        boolean isEmpty = this.top == 0;
+        return isEmpty;
     }
 }
