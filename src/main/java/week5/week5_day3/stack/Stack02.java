@@ -14,8 +14,7 @@ public class Stack02 {
     }
 
     public void push(int value) {
-        this.arr[top] = value;
-        top++;
+        this.arr[top++] = value;
     }
 
     public Integer[] getArr() {
@@ -23,8 +22,6 @@ public class Stack02 {
     }
 
     public int pop() {
-        int value = this.arr[this.top-1];
-        this.top--;
-        return value;
+        return this.arr[--this.top];
     }
 }
