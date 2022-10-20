@@ -13,6 +13,8 @@ import week5.week5_day1.dbexercise.dao.UserDaoFactory;
 import week5.week5_day1.dbexercise.domain.User;
 import java.sql.SQLException;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = UserDaoFactory.class)
 class UserDaoTest {
@@ -27,8 +29,17 @@ class UserDaoTest {
         User user = new User("15", "Eternity", "1123");
         //userDao.add(user);
 
-        User findUser = userDao.findById("10");
-        Assertions.assertEquals("Eternity", findUser.getName());
+        User findUser = userDao.findById("50");
+        assertEquals("Eternity",findUser.getName());
+        assertEquals("1234",findUser.getPassword());
+    }
+
+    @Test
+    void count() throws SQLException {
+        UserDao userDao = context.getBean("awsUserDao",UserDao.class);
+        int count = userDao.getCount();
+
+        assertEquals(9,count);
     }
 
 }
