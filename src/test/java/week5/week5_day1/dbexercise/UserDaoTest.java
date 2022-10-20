@@ -25,11 +25,12 @@ class UserDaoTest {
         UserDao userDao = context.getBean("awsUserDao",UserDao.class);
 
         User user = new User("15", "Eternity", "1123");
+        userDao.deleteAll();
         userDao.add(user);
 
         User findUser = userDao.findById("15");
-        assertEquals("Eternity",findUser.getName());
-        assertEquals("1123",findUser.getPassword());
+        assertEquals(user.getName(),findUser.getName());
+        assertEquals(user.getPassword(),findUser.getPassword());
     }
 
     @Test
