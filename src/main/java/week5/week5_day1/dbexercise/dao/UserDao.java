@@ -1,5 +1,6 @@
 package week5.week5_day1.dbexercise.dao;
 
+import org.springframework.dao.EmptyResultDataAccessException;
 import week5.week5_day1.dbexercise.domain.User;
 
 import java.sql.*;
@@ -41,14 +42,18 @@ public class UserDao {
         PreparedStatement ps = conn.prepareStatement(
                 "select id, name ,password FROM users WHERE id = ?");
         ps.setString(1, id);
+
         ResultSet rs = ps.executeQuery();
-        rs.next();
-        User user = new User(rs.getString("id"), rs.getString("name"), rs.getString("password"));
+        User user = null;
+        if (rs.next()) {
+            user = new User(rs.getString("id"), rs.getString("name"), rs.getString("password"));
+        }
 
         rs.close();
         ps.close();
         conn.close();
 
+        if(user ==null) throw new EmptyResultDataAccessException(1);
         return user;
 
     }
