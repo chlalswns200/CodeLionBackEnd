@@ -1,7 +1,5 @@
 package week5.week5_day1.dbexercise;
 
-
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +29,7 @@ class UserDaoTest {
 
         User findUser = userDao.findById("15");
         assertEquals("Eternity",findUser.getName());
-        assertEquals("1234",findUser.getPassword());
+        assertEquals("1123",findUser.getPassword());
     }
 
     @Test
@@ -45,10 +43,14 @@ class UserDaoTest {
     void count() throws SQLException {
         UserDao userDao = context.getBean("awsUserDao",UserDao.class);
         userDao.deleteAll();
-        User user = new User("20", "Eternity", "1123");
+        User user = new User("1", "Eternity", "11");
+
         userDao.add(user);
-        int count = userDao.getCount();
-        assertEquals(1,count);
+        assertEquals(1,userDao.getCount());
+
+        User userB = new User("2", "Um", "22");
+        userDao.add(userB);
+        assertEquals(2,userDao.getCount());
     }
 
 }
