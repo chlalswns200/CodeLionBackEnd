@@ -49,8 +49,7 @@ public class UserDao {
     }
 
     public void add(User user) throws SQLException {
-        StatementStrategy st = new AddStrategy(user);
-        jdbcContextWithStatementStrategy(st);
+        jdbcContextWithStatementStrategy(new AddStrategy(user));
     }
 
     public User findById(String id) throws SQLException {
