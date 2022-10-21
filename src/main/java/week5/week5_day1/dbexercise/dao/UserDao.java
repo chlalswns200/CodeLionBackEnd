@@ -1,6 +1,8 @@
 package week5.week5_day1.dbexercise.dao;
 
 import org.springframework.dao.EmptyResultDataAccessException;
+import week5.week5_day1.dbexercise.dao.connection.AwsConnectionMaker;
+import week5.week5_day1.dbexercise.dao.connection.ConnectionMaker;
 import week5.week5_day1.dbexercise.domain.User;
 
 import java.sql.*;
@@ -64,10 +66,8 @@ public class UserDao {
 
         try {
             conn = connectionMaker.makeConnection();
-            ps = conn.prepareStatement(
-                    "DELETE FROM users");
+            ps = new DeleteAllStrategy().makePreparedStatement(conn);
             ps.executeUpdate();
-
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally{

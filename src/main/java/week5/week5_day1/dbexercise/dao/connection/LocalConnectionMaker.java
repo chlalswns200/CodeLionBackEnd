@@ -1,9 +1,8 @@
-package week5.week5_day1.dbexercise.dao;
+package week5.week5_day1.dbexercise.dao.connection;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.Map;
 
 public class LocalConnectionMaker implements ConnectionMaker{
     @Override
