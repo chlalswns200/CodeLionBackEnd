@@ -49,7 +49,7 @@ public class UserDao {
     }
 
     public void add(User user) throws SQLException {
-        StatementStrategy st = new AddStrategy();
+        StatementStrategy st = new AddStrategy(user);
         jdbcContextWithStatementStrategy(st);
     }
 
@@ -77,8 +77,7 @@ public class UserDao {
     }
 
     public void deleteAll() throws SQLException {
-        DeleteAllStrategy st = new DeleteAllStrategy();
-        jdbcContextWithStatementStrategy(st);
+        jdbcContextWithStatementStrategy(new DeleteAllStrategy());
 
     }
 
