@@ -1,4 +1,4 @@
-# 멋쟁이사자처럼 백엔드 스쿨🦁
+# 백엔드 스쿨
 
 ## week3
 [CodeUp](https://codeup.kr/problemsetsol.php?psid=23)
