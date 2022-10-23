@@ -26,12 +26,6 @@
 |File|Create|CreateFile|
 |Project|인구이동 count|PopulationStatistics|
 |CodeUp||1031~1040|
-
-[Heat Map 그리기 사이트](https://jsfiddle.net/gh/get/library/pure/highcharts/highcharts/tree/master/samples/highcharts/demo/heatmap)
-
-인구이동 히트맵 
-<div style="text-align: left">
-<img width="540" src="https://user-images.githubusercontent.com/61926751/194486998-e6ce79e1-073a-40ed-820e-75ea5f440327.png"></div>
                                                                                                                                     
 ## week4
 [CodeUp](https://codeup.kr/problemsetsol.php?psid=23)
