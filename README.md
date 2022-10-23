@@ -1,7 +1,6 @@
 # 백엔드 스쿨
 
 ## week3
-[CodeUp](https://codeup.kr/problemsetsol.php?psid=23)
 
 **10/5**
 |학습내용|분류|예제|
@@ -28,8 +27,6 @@
 |CodeUp||1031~1040|
                                                                                                                                     
 ## week4
-[CodeUp](https://codeup.kr/problemsetsol.php?psid=23)
-[프로그래머스](https://school.programmers.co.kr/learn/challenges?order=acceptance_desc)
 
 **10/11**
 |학습내용|분류|예제|
@@ -42,7 +39,7 @@
 |----|----|----|
 |알고리즘|최댓값 찾기|[코드업 2081](https://codeup.kr/problem.php?id=2081), [코드업 4596](https://codeup.kr/problem.php?id=4596)|
 |codeup|||1051~1060|
-|File, DB|csv를 읽어서 데이터를 insert하는 sql 파일 생성하기||
+|File, DB|csv를 읽어서 데이터를 insert하는 sql 쿼리||
 
 **10/13**
 |학습내용|분류|예제|
@@ -58,7 +55,6 @@
 |File, DB|TDD||
 
 ## week5
-교재 : 토비의 스프링3
 
 **10/17**
 |학습내용|분류|예제|
