@@ -13,6 +13,7 @@ public class UserDaoFactory {
 
         AwsConnectionMaker awsConnectionMaker = new AwsConnectionMaker();
         UserDao userDao = new UserDao(awsConnectionMaker);
+
         return userDao;
     }
 
