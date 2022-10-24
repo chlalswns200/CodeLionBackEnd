@@ -5,27 +5,24 @@ import week5.week5_day1.dbexercise.dao.connection.AwsConnectionMaker;
 import week5.week5_day1.dbexercise.dao.connection.ConnectionMaker;
 import week5.week5_day1.dbexercise.domain.User;
 
+import javax.sql.DataSource;
 import java.sql.*;
 
 //환경 변수를 통해 id name password를 따로 저장하고 하는 방법
 
 public class UserDao {
 
-    private ConnectionMaker connectionMaker;
+    private DataSource dataSource;
 
-    public UserDao() {
-        this.connectionMaker = new AwsConnectionMaker();
-    }
-
-    public UserDao(ConnectionMaker connectionMaker) {
-        this.connectionMaker = connectionMaker;
+    public UserDao(DataSource dataSource) {
+        this.dataSource = dataSource;
     }
 
     public void jdbcContextWithStatementStrategy(StatementStrategy stmt) throws SQLException {
         Connection conn = null;
         PreparedStatement ps = null;
         try {
-            conn = connectionMaker.makeConnection();
+            conn = dataSource.getConnection();
             ps = stmt.makePreparedStatement(conn);
             ps.executeUpdate();
         } catch (SQLException e) {
@@ -54,7 +51,7 @@ public class UserDao {
 
     public User findById(String id) throws SQLException {
 
-        Connection conn = connectionMaker.makeConnection();
+        Connection conn = dataSource.getConnection();
         PreparedStatement ps = conn.prepareStatement(
                 "select id, name ,password FROM users WHERE id = ?");
         ps.setString(1, id);
@@ -84,7 +81,7 @@ public class UserDao {
         PreparedStatement ps = null;
         ResultSet rs = null;
         try {
-            conn = connectionMaker.makeConnection();
+            conn = dataSource.getConnection();
             ps = conn.prepareStatement(
                     "SELECT count(*) from users");
             rs = ps.executeQuery();
