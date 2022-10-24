@@ -55,7 +55,6 @@ public class UserDao {
     public User findById(String id) throws SQLException {
 
         Connection conn = connectionMaker.makeConnection();
-
         PreparedStatement ps = conn.prepareStatement(
                 "select id, name ,password FROM users WHERE id = ?");
         ps.setString(1, id);
