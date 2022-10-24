@@ -7,6 +7,7 @@ import week5.week5_day1.dbexercise.domain.User;
 
 import javax.sql.DataSource;
 import java.sql.*;
+import java.util.List;
 
 //환경 변수를 통해 id name password를 따로 저장하고 하는 방법
 
@@ -20,7 +21,7 @@ public class UserDao {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
-    public void add(final User user) throws SQLException {
+    public void add(final User user) {
         this.jdbcTemplate.update("INSERT INTO users(id,name,password) values(?,?,?)",
                 user.getId(),
                 user.getName(),
@@ -41,11 +42,25 @@ public class UserDao {
         return this.jdbcTemplate.queryForObject(sql, rowMapper, id);
     }
 
-    public void deleteAll() throws SQLException {
+    public void deleteAll()  {
         jdbcTemplate.update("delete from users");
     }
 
     public int getCount() {
         return this.jdbcTemplate.queryForObject("select count(*) from users;", Integer.class);
+    }
+
+    public List<User> getAll() {
+
+        String sql = "select * from users order by id";
+
+        RowMapper<User> rowMapper = new RowMapper<User>(){
+            @Override
+            public User mapRow(ResultSet rs,int rowNum) throws SQLException {
+                User user = new User(rs.getString("id"),rs.getString("name"),rs.getString("password"));
+                return user;
+            }
+        };
+        return this.jdbcTemplate.query(sql,rowMapper);
     }
 }
