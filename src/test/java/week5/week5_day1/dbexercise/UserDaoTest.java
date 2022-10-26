@@ -12,7 +12,6 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import week5.week5_day1.dbexercise.dao.UserDao;
 import week5.week5_day1.dbexercise.dao.UserDaoFactory;
 import week5.week5_day1.dbexercise.domain.User;
-import java.sql.SQLException;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
