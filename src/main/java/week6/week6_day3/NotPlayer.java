@@ -2,7 +2,7 @@ package week6.week6_day3;
 
 import java.util.Arrays;
 import java.util.Hashtable;
-import java.util.List;
+import java.util.Map;
 
 public class NotPlayer {
 
@@ -30,18 +30,23 @@ public class NotPlayer {
         Arrays.sort(participant);
         Arrays.sort(completion);
 
-        Hashtable<String,Integer> ht = new Hashtable<>();
+        Map<String,Integer> ht = new Hashtable<>();
 
         for (int i = 0; i < participant.length; i++) {
-            ht.put(participant[i],i);
+            String key = participant[i];
+
+            if (!ht.containsKey(key)) {
+                ht.put(key,0);
+            }
+            ht.put(key,ht.get(key)+1);
         }
 
         for (int i = 0; i < completion.length; i++) {
-            ht.replace(completion[i],-1);
+            ht.replace(completion[i],ht.get(completion[i]) - 1);
         }
 
         for (String s : ht.keySet()) {
-            if (ht.get(s) > 0) {
+            if (ht.get(s) == 1) {
                 return s;
             }
         }
@@ -51,8 +56,8 @@ public class NotPlayer {
 
     public static void main(String[] args) {
 
-        String[] participant = {"marina", "josipa", "nikola", "vinko", "filipa"};
-        String[] completion = {"eden", "kiki"};
+        String[] participant = {"mislav", "stanko", "mislav", "ana"};
+        String[] completion = {"stanko", "ana", "mislav"};
         
         NotPlayer nt = new NotPlayer();
         String solution = nt.solution(participant, completion);
