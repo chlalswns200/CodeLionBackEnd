@@ -24,6 +24,7 @@ public class NotPlayer {
     } // 해시 없이 푼거
 
     public String solution(String[] participant, String[] completion) {
+
         String answer = "";
 
         Arrays.sort(participant);
@@ -32,22 +33,26 @@ public class NotPlayer {
         Hashtable<String,Integer> ht = new Hashtable<>();
 
         for (int i = 0; i < participant.length; i++) {
-            if(ht.get(participant[i])==1)
-            ht.put(participant[i],1);
+            ht.put(participant[i],i);
+        }
+
+        for (int i = 0; i < completion.length; i++) {
+            ht.replace(completion[i],-1);
         }
 
         for (String s : ht.keySet()) {
-            System.out.println("s = " + s);
+            if (ht.get(s) > 0) {
+                return s;
+            }
         }
-
         return answer;
-    } // 해쉬 관련 함수를 잘 모름
+    }
 
 
     public static void main(String[] args) {
 
-        String[] participant = {"mislav", "stanko", "mislav", "ana"};
-        String[] completion = {"stanko", "ana", "mislav"};
+        String[] participant = {"marina", "josipa", "nikola", "vinko", "filipa"};
+        String[] completion = {"eden", "kiki"};
         
         NotPlayer nt = new NotPlayer();
         String solution = nt.solution(participant, completion);
