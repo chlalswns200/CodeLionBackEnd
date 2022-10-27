@@ -42,7 +42,7 @@ public class HashTable {
         this.table[hashIdx].add(new Node(key,value));
     }
 
-    public Integer search(String key) {
+    public Integer get(String key) {
 
         List<Node> nodes = this.table[hash(key)];
         for (Node node : nodes) {
@@ -59,12 +59,13 @@ public class HashTable {
         ht.insert("Yoonseo",1);
         ht.insert("Seoyoon",2);
 
-        int result = ht.search("Seoyoon");
+        int result = ht.get("Seoyoon");
 
         if (result == 2) {
             System.out.println("테스트 성공");
         } else {
             System.out.println("테스트 실패 "+result);
         }
+
     }
 }
