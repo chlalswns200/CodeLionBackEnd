@@ -42,7 +42,7 @@ public class NotPlayer {
         }
 
         for (int i = 0; i < completion.length; i++) {
-            ht.replace(completion[i],ht.get(completion[i]) - 1);
+            ht.replace(completion[i],ht.get(completion[i])-1);
         }
 
         for (String s : ht.keySet()) {
