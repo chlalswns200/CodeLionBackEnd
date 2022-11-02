@@ -12,7 +12,7 @@ public class RemoveMultipleOf {
         for (int i = 2; i <= N; i++) {
             nl.add(i);
         }
-        nl.removeIf(num -> num % 2 == 0&& num!=2);
+        nl.removeIf(num -> num % 2 == 0&& num==2);
 
         System.out.println(Arrays.toString(nl.toArray()));
     }
