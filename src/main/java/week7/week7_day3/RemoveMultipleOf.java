@@ -6,17 +6,29 @@ import java.util.List;
 
 public class RemoveMultipleOf {
     public static void main(String[] args) {
-        int N = 50;
-        List<Integer> nl = new ArrayList<>();
+        int N = 50; // 50미만의 모든 소수를 구합니다.
 
-        for (int i = 2; i <= N; i++) {
-            nl.add(i);
-        }
-        int[] nums = {2,3,5,7};
-        for (int i : nums) {
-            nl.removeIf(num -> num % i == 0&& num==i);
+        List<Integer> nums = new ArrayList<>();
+        boolean[] checks = new boolean[N];
+
+        // 2 ~ 50채우기
+        for (int i = 2; i <= N; i++) nums.add(i);
+
+        for (int j = 2; j * j <= N; j++) {
+            for (int i = 0; i < nums.size(); i++) {
+                if (nums.get(i) % j == 0 && nums.get(i) > j){
+                    checks[i]=true;
+                }
+
+            }
         }
 
-        System.out.println(Arrays.toString(nl.toArray()));
+        for (int i = 0; i < nums.size(); i++) {
+            if (checks[i] == false) {
+                System.out.print(" "+nums.get(i));
+            }
+        }
+
+        // System.out.println(nums);
     }
 }
