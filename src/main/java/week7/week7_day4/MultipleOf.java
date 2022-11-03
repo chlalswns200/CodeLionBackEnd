@@ -1,6 +1,8 @@
 package week7.week7_day4;
 
 
+import net.minidev.json.JSONUtil;
+
 import java.util.Arrays;
 
 public class MultipleOf {
@@ -14,15 +16,20 @@ public class MultipleOf {
         for (int i = 0; i < nums.length; i++) {
             nums[i] = i+2;
         }
-        int multipleOf = 2;
-        for (int i = multipleOf; i <= nums.length; i+=multipleOf) {
-            checks[i] = false;
-        }
-        for (int i = 0; i < nums.length; i++) {
-            if (checks[i] == true) {
-                System.out.print(" " + nums[i]);
+
+        for (int j = 0; j * j <= N; j++) {
+            int multipleOf = nums[j];
+            for (int i = nums[j] + j; i < nums.length; i+=multipleOf) {
+                checks[i] = false;
             }
         }
+
+        int cnt = 0;
+        for (int i = 0; i < checks.length; i++) {
+            if(checks[i]) cnt++;
+        }
+        System.out.println(" "+cnt);
     }
+
 
 }
