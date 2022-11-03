@@ -8,7 +8,7 @@ public class MultipleOf {
         long num =2;
         for (int i = 2; i < 100; i++) {
             System.out.println( i+" "+num);
-            num*=2;
+            num+=2;
         }
     }
 
