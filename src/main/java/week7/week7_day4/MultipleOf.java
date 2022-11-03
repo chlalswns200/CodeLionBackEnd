@@ -14,7 +14,15 @@ public class MultipleOf {
         for (int i = 0; i < nums.length; i++) {
             nums[i] = i+2;
         }
-        System.out.println(Arrays.toString(nums));
+        int multipleOf = 2;
+        for (int i = multipleOf; i <= nums.length; i+=multipleOf) {
+            checks[i] = false;
+        }
+        for (int i = 0; i < nums.length; i++) {
+            if (checks[i] == true) {
+                System.out.print(" " + nums[i]);
+            }
+        }
     }
 
 }
