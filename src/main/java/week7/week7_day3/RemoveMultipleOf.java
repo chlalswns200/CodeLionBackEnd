@@ -5,6 +5,8 @@ import java.util.Arrays;
 import java.util.List;
 
 public class RemoveMultipleOf {
+
+
     public static void main(String[] args) {
         int N = 50; // 50미만의 모든 소수를 구합니다.
 
@@ -12,6 +14,7 @@ public class RemoveMultipleOf {
         boolean[] checks = new boolean[N];
 
         // 2 ~ 50채우기
+        int cnt=0;
         for (int i = 2; i <= N; i++) nums.add(i);
 
         for (int j = 2; j * j <= N; j++) {
