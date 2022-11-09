@@ -12,5 +12,6 @@ public class SelectionSort {
             }
         }
         System.out.println("maxIdx = " + maxIdx);
+        System.out.println("ar[maxIdx] = " + ar[maxIdx]);
     }
 }
