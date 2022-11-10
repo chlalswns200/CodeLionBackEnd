@@ -47,15 +47,10 @@ public class SameNum {
         }
         int size = stack.size();
         int[] answer = new int[size];
-        int j=0;
+        int j= size-1;
         while (!stack.isEmpty()) {
             answer[j] = stack.pop();
-            j++;
-        }
-        for( int i=0; i < (answer.length/2); i++) {
-            int temp = answer[i];
-            answer[i] = answer[answer.length-i-1];
-            answer[answer.length-i-1] = temp;
+            j--;
         }
         return answer;
     }
