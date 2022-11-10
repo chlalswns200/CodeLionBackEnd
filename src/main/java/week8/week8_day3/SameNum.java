@@ -1,28 +1,36 @@
 package week8.week8_day3;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class SameNum {
     public static void main(String[] args) {
         SameNum sn = new SameNum();
-        sn.solution();
+        int[] arr = new int[]{1,1,3,3,0,1,1};
+        int[] solution = sn.solution(arr);
+        System.out.println(Arrays.toString(solution));
     }
 
-     public int[] solution() {
+    public int[] solution(int []arr) {
         List<Integer> list = new ArrayList<>();
-        int[] ar = new int[]{1,1,3,3,0,1,1};
-        int i=0;
-        while (i<ar.length) {
-            int num = ar[i];
-            while (num == ar[i]) {
+        int i = 0;
+        while (i < arr.length) {
+            int num = arr[i];
+            while (num == arr[i]) {
                 i++;
-                if(i==ar.length) break;
+                if (i == arr.length) break;
             }
             list.add(num);
         }
-         int size = list.size();
+        int size = list.size();
+        int[] answer = new int[size];
+        int j=0;
+        for (Integer integer : list) {
 
-         return
+            answer[j] = integer;
+            j++;
+        }
+        return answer;
     }
 }
