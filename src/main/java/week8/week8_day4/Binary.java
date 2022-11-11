@@ -12,9 +12,8 @@ public class Binary {
             if (s.length() < n) {
                 s = "0".repeat(n-s.length()) + s;
             }
-            String replace = s.replace("1", "#");
-            String replace1 = replace.replace("0", " ");
-            answer[i] = replace1;
+            String replace = s.replace("1", "#").replace("0", " ");
+            answer[i] = replace;
         }
 
         return answer;
