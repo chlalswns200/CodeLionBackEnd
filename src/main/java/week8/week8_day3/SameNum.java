@@ -54,4 +54,6 @@ public class SameNum {
         }
         return answer;
     }
+
+    
 }

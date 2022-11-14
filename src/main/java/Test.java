@@ -1,6 +1,8 @@
 public class Test {
 
     public static void main(String[] args) {
-        System.out.println("안녕하세요");
+        String str = "1234";
+        String repeat = str.repeat(0);
+        System.out.println(repeat);
     }
 }
