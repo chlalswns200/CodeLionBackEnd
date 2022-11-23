@@ -1,4 +1,4 @@
-package week10;
+package week10.week10_day1;
 
 public class Print1To100V2 {
 
